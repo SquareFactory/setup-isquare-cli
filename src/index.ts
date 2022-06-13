@@ -5,12 +5,11 @@ import download from './download';
 async function main() {
   const cli = await download();
 
-  console.log(cli);
-
   // Login to isquare if the user provided a token
   const token = getInput('token');
+
   if (token) {
-    await exec(`${cli} token ${token}`);
+    await exec(`${cli} login ${token}`);
   }
 }
 

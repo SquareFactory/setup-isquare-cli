@@ -5834,7 +5834,7 @@ async function download() {
     const url = `${base}/${version}/${name}`;
     const cli = await (0, tool_cache_1.downloadTool)(url, (0, node_path_1.join)((0, os_1.homedir)(), 'isquare', 'bin', `i2${extension}`));
     await (0, promises_1.chmod)(cli, 0o775);
-    (0, core_1.info)(cli);
+    (0, core_1.info)(`i2 installed at: ${cli}`);
     (0, core_1.addPath)((0, node_path_1.dirname)(cli));
     return cli;
 }
@@ -6029,11 +6029,10 @@ const exec_1 = __nccwpck_require__(82);
 const download_1 = __nccwpck_require__(367);
 async function main() {
     const cli = await (0, download_1.default)();
-    console.log(cli);
     // Login to isquare if the user provided a token
     const token = (0, core_1.getInput)('token');
     if (token) {
-        await (0, exec_1.exec)(`${cli} token ${token}`);
+        await (0, exec_1.exec)(`${cli} login ${token}`);
     }
 }
 main().catch(console.error);

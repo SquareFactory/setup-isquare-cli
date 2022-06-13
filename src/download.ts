@@ -32,7 +32,7 @@ export default async function download() {
   const cli = await downloadTool(url, join(homedir(), 'isquare', 'bin', `i2${extension}`));
   await chmod(cli, 0o775);
 
-  info(cli);
+  info(`i2 installed at: ${cli}`);
   addPath(dirname(cli));
 
   return cli;

@@ -36,6 +36,6 @@
   },
   "private": true,
   "simple-git-hooks": {
-    "pre-commit": "pnpm run build"
+    "pre-commit": "pnpm run build && git add dist/index.js"
   }
 }
