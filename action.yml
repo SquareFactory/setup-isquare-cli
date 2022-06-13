@@ -1,0 +1,17 @@
+name: Setup isquare CLI
+author: SquareFactory SA
+description: Setup the isquare train platform cli (i2)
+branding:
+  icon: terminal
+  color: white
+runs:
+  using: node16
+  main: dist/index.js
+inputs:
+  version:
+    description: The isquare CLI version
+    required: false
+    default: latest
+  token:
+    description: The isquare train platform token
+    required: false

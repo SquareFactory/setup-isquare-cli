@@ -1,0 +1,26 @@
+name: Tests
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+jobs:
+  test:
+    name: Test the action
+    strategy:
+      matrix:
+        os:
+          - ubuntu-20.04
+          - windows-2022
+          # - mac-12 # we need to sign the is cli first
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup isquare CLI
+        uses: ./
+        with:
+          token: ${{ secrets.ISQUARE_TOKEN }}
+      - name: List the isquare models
+        run: i2 models list
