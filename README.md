@@ -18,6 +18,6 @@ Then, after adding your token to the GitHub Actions secrets of your repository,
   uses: SquareFactory/setup-isquare-cli@main
   with:
     token: ${{ secrets.ISQUARE_TOKEN }}
-- name: List the isquare models
-  run: i2 models list
+- name: Create isquare workload
+  run: i2 workloads create --name <name> --script <path> --no-code
 ```
